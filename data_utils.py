@@ -69,7 +69,10 @@ class TextAudioLoader(torch.utils.data.Dataset):
                 sampling_rate, self.sampling_rate))
         audio_norm = audio / self.max_wav_value
         audio_norm = audio_norm.unsqueeze(0)
-        spec_filename = filename.replace(".wav", ".spec.pt")
+        new_directory = "/kaggle/working/"
+
+        # Đổi tên tệp và thêm đường dẫn mới
+        spec_filename = os.path.join(new_directory, os.path.basename(filename).replace(".wav", ".spec.pt"))
         print(1)
         if os.path.exists(spec_filename):
             print(2)
