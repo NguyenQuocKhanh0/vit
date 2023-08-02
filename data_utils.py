@@ -70,8 +70,11 @@ class TextAudioLoader(torch.utils.data.Dataset):
         audio_norm = audio / self.max_wav_value
         audio_norm = audio_norm.unsqueeze(0)
         spec_filename = filename.replace(".wav", ".spec.pt")
+        print(1)
         if os.path.exists(spec_filename):
+            print(2)
             spec = torch.load(spec_filename)
+            print(3)
         else:
             spec = spectrogram_torch(audio_norm, self.filter_length,
                                      self.sampling_rate, self.hop_length, self.win_length,
