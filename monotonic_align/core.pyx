@@ -1,4 +1,4 @@
-cimport cython
+import cython
 from cython.parallel import prange
 
 
